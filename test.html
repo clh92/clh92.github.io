@@ -1,1 +1,29 @@
-LiHong - 2018-01-03
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="call()"> button </button>
+    <script type="text/javascript" src="native-share.js"></script>
+    <script type="text/javascript">
+        var nativeShare = new NativeShare();
+        nativeShare.setShareData({
+            icon: '100.png',
+            link: String(window.location).replace(/(isband|token|unionid)=([^&]*)(&|$)/ig, ''),
+            title: 'data.data.share_title',
+            desc: 'data.data.share_content'
+        });
+        
+        function call(command) {
+            try {
+                nativeShare.call(command)
+            } catch (err) {
+                // 如果不支持，你可以在这里做降级处理
+                alert(err.message)
+            }
+        }
+    </script>
+</body>
+</html>
