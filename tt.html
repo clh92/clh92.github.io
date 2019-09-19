@@ -1,54 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="edge" />
-    <meta name="renderer" content="webkit">
-    <title>支付中心</title>
-    <script src="https://gw.alipayobjects.com/as/g/h5-lib/alipayjsapi/3.1.1/alipayjsapi.inc.min.js"></script>
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title></title>
 </head>
 <body>
-    <form style="display: none" action="https://mclient.alipay.com/h5/peerpay.htm" method="get" target="_self">
-        <input name="biz_no" value="2019091704200362621044035390_b050a389f1b4f48cd7d62c822261286c" >
-        <input name="app_name" value="tb" >
-        <input name="sc" value="qr_code" >
-        <input name="v" value="20190924" >
-        <input name="sign" value="88d30e" >
-        <input name="__webview_options__" value="pd%3dNO" >
-    </form>
+    <p>
+        <img src="ea98daa48aec95ca35159cc0a3b4cdf0.jpg">
+    </p>
 </body>
-
-<script type="application/javascript">
-    $(document).ready(function(){
-        tradePay("2019091704200362621044035390");
-        $("#closeButton").click(function() {
-            AlipayJSBridge.call('closeWebview');
-        });
-    });
-
-    function ready(callback) {
-        if (window.AlipayJSBridge) {
-            callback && callback();
-        } else {
-            document.addEventListener('AlipayJSBridgeReady', callback, false);
-        }
-    }
-
-    function tradePay(tradeNO) {
-        ready(function(){
-            // 通过传入交易号唤起快捷调用方式(注意tradeNO大小写严格)
-            AlipayJSBridge.call("tradePay", {
-                tradeNO: tradeNO,
-                bizType:"share_pp_pay",
-                bizSubType:"peerpay_trade"
-            }, function (data) {
-                if ("9000" != data.resultCode) {
-                    document.forms[0].submit();
-                }
-            });
-        });
-    }
-</script>
 </html>
