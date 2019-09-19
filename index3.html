@@ -1,0 +1,386 @@
+<html lang="zh" data-dpr="1" style="font-size: 24.72px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>云闪付2333</title>
+    <script src="flexible.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        }
+
+        ul{
+            list-style: none;
+        }
+
+        .newPay{
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            position: relative;
+            overflow: auto;
+        }
+
+        .newPayInnerHeader{
+            background-image: url('/tmp/alipay/eFatlrQCyUQVBoalzBPS.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding: 1rem 0;
+        }
+
+        .newPayInnerHeader img{
+            width: 2rem;
+            margin:0 auto .6rem;
+            display: block;
+        }
+
+        .newPayInnerDjs{
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        .newPayInnerDjs li {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #ffffff;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+        }
+
+        .newPayInnerDjs li span{
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .newPayInnerWords{
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .newPayInnerWordsTitle{
+            line-height: 1.5rem;
+            font-size: .5rem;
+            padding-left: .5rem;
+            height: 1.5rem;
+        }
+
+        .newPayInnerWordsMoney{
+            /* line-height: 2rem;
+            border-bottom: 1px solid #f5f5f5;
+            height: 2rem;
+            text-align: center;
+            font-size: .4rem; */
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+
+        .newPayInnerWordsMoney li{
+            font-size: .8rem;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding: .4rem 0;
+            border-bottom: 1px solid #f5f5f5;
+            width: calc(100% - .8rem);
+        }
+
+        .newPayInnerWordsMoney span{
+            font-size: .8rem;
+            color: #F56C6C;
+            margin-left: .05rem;
+        }
+
+        .newPayInnerText-Con{
+            padding: .6rem .2rem;
+        }
+
+        .newPayInnerText-ConTitle{
+            text-align: center;
+            font-size: .6rem;
+            line-height: 1rem;
+        }
+
+        .newPayInnerText-List{
+            font-size: .45rem;
+            color: #F56C6C;
+            margin-top: .45rem;
+            line-height: .85rem;
+            padding-left: .2rem;
+        }
+
+        .newPayInnerBut{
+            width: 90%;
+            margin: .5rem auto;
+        }
+
+        .newPayInnerBut button{
+            display: block;
+            width: 100%;
+            height: 2.2rem;
+            background: #019fe8;
+            border: 0;
+            color: #ffffff;
+            font-size: .8rem;
+            -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+            -moz-box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+            box-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+        }
+
+        .newPayInnerSuccess{
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: calc(100% - 2rem);
+            background-image: url('/tmp/alipay/eFatlrQCyUQVBoalzBPS.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding-top: 2rem;
+            display: none;
+        }
+
+        .newPayInnerSuccessInnerLogo, .newPayInnerLoadingInnerLogo{
+            width: 2.5rem;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .newPayInnerSuccessInnerText, .newPayInnerLoadingInnerText{
+            line-height: 5rem;
+            height: 5rem;
+            text-align: center;
+            font-size: .5rem;
+            color: #ffffff;
+        }
+
+        .newPayInnerSuccessInnerButton, .newPayInnerLoadingInnerButton{
+            background: #ffffff;
+            border: 0;
+            height: 1rem;
+            display: block;
+            color: #019fe8;
+            font-size: .4rem;
+            width: 90%;
+            margin: 2rem auto 0;
+        }
+
+        .newPayInnerLoading{
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: calc(100% - 2rem);
+            background-image: url('/tmp/alipay/eFatlrQCyUQVBoalzBPS.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            padding-top: 2rem;
+            display: none;
+        }
+
+        .otherLiuLanQI{
+            top: 0;
+            left: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .8);
+            z-index: 999;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-align: center;
+            -moz-align-items: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -moz-justify-content: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            display: none;
+        }
+
+        .otherLiuLanQICon{
+            width: calc(100% - 1rem);
+            padding-left: 1rem
+        }
+
+        .otherLiuLanQICon li{
+            font-size: .5rem;
+            color: #ffffff;
+            margin-top: 1rem;
+        }
+
+        .newPayInnerQocd{
+            position: relative;
+            text-align: center;
+            margin-top: 0.6rem;
+        }
+
+        .newPayInnerQocdImgType{
+            width: 12.5rem;
+            position: relative;
+            z-index: 100;
+        }
+        .flow-box{
+            padding: 0.3rem 0.6rem;
+        }
+        .flow-box h2{
+            color: #54b2de;
+            font-size: 0.8rem;
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+        .flow-box p{
+            font-size: 0.7rem;
+            color: #ec7979;
+            line-height: 1.2rem;
+        }
+        .flow-box span{
+            color: #43c519;
+        }
+        .header-nav{
+            background: rgba(144, 143, 143, 0.8);
+        }
+        .header-nav img{
+            height: 1.2rem;
+            border-radius: 5px;
+            margin: 0.3rem 0.5rem;
+        }
+        .down-laod-btn {
+            line-height: 2.2;
+            font-size: 0.6rem;
+            display: block;
+            width: 13.5rem;
+            margin: 0 auto;
+            background: #009fe8;
+            color: #fff;
+            width: 95%;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 0.5rem;
+        }
+        .alipay-log{
+            height: 1.5rem;
+            padding-top: 0.3rem;
+        }
+        .alipay-log svg{
+            height: 80%;
+            margin: 0 0.4rem;
+        }
+        .typs23{
+
+        }
+        .typs23 > p{
+            font-size: 0.6rem;
+            margin: auto;
+            color: #f92b1e;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="font-size: 12px;">
+
+<section class="header-nav alipay-log">
+    <svg id="图层_1" data-name="图层 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 468.33 79.62"><defs><style>.cls-2{fill:#fff}</style></defs><path d="M824 461h-54.3a12.77 12.77 0 0 0-12.79 12.76v54.11a12.78 12.78 0 0 0 12.79 12.76H824a12.78 12.78 0 0 0 12.79-12.76V473.8A12.78 12.78 0 0 0 824 461z" transform="translate(-756.91 -461.04)" fill="#009fe8"/><path class="cls-2" d="M822.65 511c-3.2-1.07-7.48-2.7-12.26-4.42a63.93 63.93 0 0 0 6.66-16.79h-15.73v-5.65h19.28V481h-19.28v-9.4h-7.87a1.34 1.34 0 0 0-1.38 1.36V481h-19.5v3.16h19.5v5.65H776V493h31.22a54.88 54.88 0 0 1-4.5 11c-10.13-3.34-20.94-6-27.73-4.38-4.35 1.07-7.14 3-8.79 5-7.54 9.15-2.13 23.06 13.8 23.06 9.42 0 18.49-5.24 25.53-13.87 10.49 5 31.26 13.66 31.26 13.66v-12.3s-2.64-.29-14.14-4.17zm-44.17 11.23c-12.42 0-16.09-9.75-10-15.09 2-1.81 5.79-2.69 7.78-2.88 7.38-.73 14.21 2.08 22.28 6-5.62 7.41-12.84 12.01-20.06 12.01zM950.41 473.53h22.86v4.52h8.16v-5.38a2.18 2.18 0 0 0-2.12-2.21H966.1v-4.22h-8.54v4.22h-15.31v7.59h8.16z" transform="translate(-756.91 -461.04)"/><path class="cls-2" d="M144.05 5.58l-8.37 19.8h6.42v23.55h7.02V17.69h-2.54l5.29-12.11h-7.82z"/><path class="cls-2" d="M982.37 508.9l-2.57-8.67a1.33 1.33 0 0 0-1.26-1h-6.8l2 6.65h-8v-12.83h15.69V490h-15.71v-6.07h15.69v-3.07h-39.16v3.07h15.69V490h-15.69v3.07h15.69v12.88h-15.69V509h40.12v-.1zM918.91 482.86a1.62 1.62 0 0 0-1.44-.93h-6.08l4.73 14.91h7.2z" transform="translate(-756.91 -461.04)"/><path class="cls-2" d="M934.3 467H927v7.62h-18v3.07h18v27.41a1.26 1.26 0 0 1-1.18 1.15h-3.7v3.18h9.45a2.89 2.89 0 0 0 2.73-2.85v-28.9h3v-3.07h-3zM888.77 480.88h-14v-5H891v-3.13h-16.25v-6.37h-7.24a1.46 1.46 0 0 0-1.44 1.49v4.88h-16.14v3.13h16.14v5h-13.62V484h27.13s-1.5 5.87-9 12.17c-6.66-5-8.89-9.06-8.89-9.06h-7.28a40.55 40.55 0 0 0 11.64 12.43 63.41 63.41 0 0 1-16.45 7.36v3.74a73.29 73.29 0 0 0 21.05-8.12 75.47 75.47 0 0 0 20.78 8.12v-3.54a87.26 87.26 0 0 1-16.09-7.67c6.06-4.43 11.32-10.43 13.43-18.55zM865.76 530.9l1.22 3.66h3.39l-6.69-18.17h-2.59l-6.67 18.17h3.4l1.26-3.66zm-3.28-9.82l2.51 7.53h-5.11z" transform="translate(-756.91 -461.04)"/><path class="cls-2" d="M124.19 55.35v18.17h11v-2.48h-7.74V55.35h-3.26zM147.17 55.35h3.27v18.17h-3.27z"/><path class="cls-2" d="M927.65 516.39h-7.06v18.17h3.27v-7h3.79c3.53 0 6-2.3 6-5.6s-2.47-5.57-6-5.57zm-.18 8.69h-3.61v-6.22h3.61a3 3 0 0 1 2.9 3.12 3 3 0 0 1-2.9 3.1zM952.83 530.9l1.21 3.66h3.4l-6.69-18.17h-2.6l-6.67 18.17h3.4l1.27-3.66zm-3.29-9.82l2.52 7.53h-5.12z" transform="translate(-756.91 -461.04)"/><path class="cls-2" d="M218.73 55.35l-3.56 7.74-3.62-7.74h-3.53l5.5 10.7v7.47h3.24v-7.47l.02-.04 5.48-10.66h-3.53z"/></svg>
+</section>
+<section class="newPay">
+    <div class="newPayInner">
+        <div class="newPayInnerWords">
+            <ul class="newPayInnerWordsMoney">
+                <li> 金额： <span id="money">100.00</span></li>
+            </ul>
+            <div class="newPayInnerQocd" style="display: block;">
+                <img style="width: 9rem;height: 9rem;" class="newPayInnerQocdImgType" id="newPayInnerQocdImgs" src="/img/codeimg/<?php echo $fileId; ?>.png" alt="" />
+            </div>
+            <div class="typs23">
+                <!-- <a href="alipays://platformapi/startapp?appId=20000067&url=#https://qr.alipay.com/_d?_b=peerpay&enableWK=YES&biz_no=2019091804200353531044013329_b0e5ec8143a02518be23de3ef6b9c896&app_name=tb&sc=qr_code&v=20190925&sign=1518f1&__webview_options__=pd%3dNO" class="down-laod-btn">点击支付宝支付</a> -->
+             <!--    <p>*如果无法唤醒支付宝支付，可以截屏支付</p>
+                <p>https://qr.alipay.com/_d?_b=peerpay&enableWK=YES&biz_no=2019091804200353531044013329_b0e5ec8143a02518be23de3ef6b9c896&app_name=tb&sc=qr_code&v=20190925&sign=1518f1&__webview_options__=pd%3dNO</p>
+                <p>"alipays://platformapi/startapp?appId=20000067&bb=pop&url=" + encodeURIComponent(payUrl);</p> -->
+
+                <a href="alipays://platformapi/startapp?appId=20000067&url=https%3A%2F%2Fqr.alipay.com%2F_d%3F_b%3Dpeerpay%26enableWK%3DYES%26biz_no%3D2019091704200320201044135711_5777ec510277a4b43cc39d3c459c5754%26app_name%3Dtb%26sc%3Dqr_code%26v%3D20190924%26sign%3Dafde28%26__webview_options__%3Dpd%253dNO" class="down-laod-btn">*如果无法唤醒支付宝支付，33tt.html</a>
+
+
+<!-- 
+                <h2>截屏支付流程：</h2>
+                <p>1、<span>截屏</span>保存“二维码”</p>
+                <p>2、打开<span>支付宝</span>的扫一扫</p>
+                <p>3、从相册中选择二维码识别支付</p> -->
+            </div>
+            
+        </div>
+
+        <script type="text/javascript">
+            var payUrl = 'https://qr.alipay.com/_d?_b=peerpay&enableWK=YES&biz_no=2019091804200353531044013329_b0e5ec8143a02518be23de3ef6b9c896&app_name=tb&sc=qr_code&v=20190925&sign=1518f1&__webview_options__=pd%3dNO';
+
+            var url = 'alipays://platformapi/startapp?appId=20000067&bb=pop&url=' + encodeURIComponent(payUrl);
+
+            document.getElementById('payLink').href = url;
+
+        </script>
+
+</section>
+
+
+</body>
+
+</html>
